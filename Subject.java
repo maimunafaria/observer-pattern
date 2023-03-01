@@ -1,0 +1,30 @@
+package dp;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Subject {
+    private List<Observer> observers = new ArrayList<>();
+    protected File file;
+
+    public Subject(File file) {
+        this.file = file;
+    }
+    public File getFile(){
+        return this.file;
+    }
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+
+}
